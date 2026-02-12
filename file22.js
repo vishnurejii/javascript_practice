@@ -44,24 +44,15 @@ const products = [
   },
 ];
 
-let category= "productId"
-let text=1
-//to find a id find is more faster than filter
-const resultArray=products.find((product) => product._id === text)
-
-console.log(resultArray);
-
-const cart = [];
-
-function addTocart(id) {
-    const product = products.find((product) => product._id === id);
+const cart= []
+function addTocart(id){
+    const product=products.find((product)=>product._id === id)
     if (product) {
         cart.push(product);
     }
 }
+addTocart(1)
+addTocart(3)
+addTocart(5)
 
-addTocart(1);
-addTocart(3);
-addTocart(5);
-
-console.log(cart);
+console.log(cart)
