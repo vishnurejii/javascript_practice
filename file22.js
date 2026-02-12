@@ -47,12 +47,68 @@ const products = [
 const cart= []
 function addTocart(id){
     const product=products.find((product)=>product._id === id)
-    if (product) {
-        cart.push(product);
-    }
+    // if (product) {
+    //     cart.push(product);
+    // }//we are using if condition to avoid printing undefined for not existing ids
+    cart.push({...product,quantity:1})
+
+    //*************** */
+    //  if (product) {
+    //     const item={
+    //         ...product,
+    //         quantity:1
+    //     }
+    //     cart.push(item)
+    // }
 }
+function increment(productId){
+    const item=cart.find(product=>product._id===productId)
+        item.quantity++
+}
+
+function decrement(productId){
+    const item=cart.find(product=>product._id===productId)
+        if(item){
+            item.quantity--
+        }
+}
+
+function placeOrder(){
+
+    const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0)
+
+    const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+
+    const order = {
+        orderDate: new Date(),
+        email: "vishnurejii@gmail.com",
+        quantity: totalQuantity,
+        total: totalAmount
+    }
+
+    console.log(order)
+}
+
+
+
+  //orderID,orderDate,orderValue,quantity
+
 addTocart(1)
 addTocart(3)
 addTocart(5)
+products.forEach(product=>{
+    console.log(`${product.name},${product.des},${product.price}`)
+})
 
-console.log(cart)
+
+console.log("\n")
+cart.forEach(item=>{
+    console.log(`${item.name},${item.des},${item.price}`)
+})
+
+// increment(1)
+// decrement(3)
+// // console.log(cart)
+
+// placeOrder(1)
+// console.log(cart)
