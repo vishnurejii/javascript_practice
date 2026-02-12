@@ -86,6 +86,13 @@ function placeOrder(){
         total: totalAmount
     }
 
+    console.log(`order successfully placed by ${order.email}`)
+    cart.forEach(item=>{
+    console.log(`-${item.name}--${item.price}`)
+    
+})
+console.log(`quantity is: ${order.quantity}`)
+console.log(`total is : ${order.total}`)
     console.log(order)
 }
 
@@ -96,19 +103,28 @@ function placeOrder(){
 addTocart(1)
 addTocart(3)
 addTocart(5)
+
+console.log("*************flipkart*********")
 products.forEach(product=>{
     console.log(`${product.name},${product.des},${product.price}`)
 })
 
 
 console.log("\n")
+console.log("**********cart*********")
+console.log("\n")
 cart.forEach(item=>{
-    console.log(`${item.name},${item.des},${item.price}`)
+    console.log(`-${item.name}-${item.des}-${item.price}`)
 })
-
-// increment(1)
-// decrement(3)
-// // console.log(cart)
-
-// placeOrder(1)
+console.log("\n")
+increment(1)
+decrement(3)
 // console.log(cart)
+
+console.log("\n")
+console.log("***********order details************")
+
+console.log(`order placed successfully `)
+console.log("\n")
+placeOrder(1)
+console.log(cart)
