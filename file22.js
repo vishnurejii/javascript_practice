@@ -75,26 +75,37 @@ function decrement(productId){
 
 function placeOrder(){
 
-    const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0)
+    if(cart.length === 0){
+        console.log("Cart is empty ❌")
+        return
+    }
 
+    const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0)
     const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
 
     const order = {
+        orderId: Date.now(),
         orderDate: new Date(),
         email: "vishnurejii@gmail.com",
         quantity: totalQuantity,
         total: totalAmount
     }
 
-    console.log(`order successfully placed by ${order.email}`)
+    console.log(`\nOrder successfully placed by ${order.email}\n`)
+
     cart.forEach(item=>{
-    console.log(`-${item.name}--${item.price}`)
-    
-})
-console.log(`quantity is: ${order.quantity}`)
-console.log(`total is : ${order.total}`)
+        console.log(`- ${item.name} | ₹${item.price} | Qty: ${item.quantity} | Subtotal: ₹${item.price * item.quantity}`)
+    })
+
+    console.log(`\nTotal Quantity: ${order.quantity}`)
+    console.log(`Total Amount: ₹${order.total}`)
+
+    console.log("\nFull Order Object:")
     console.log(order)
+
+  
 }
+
 
 
 
@@ -124,7 +135,7 @@ decrement(3)
 console.log("\n")
 console.log("***********order details************")
 
-console.log(`order placed successfully `)
+
 console.log("\n")
 placeOrder(1)
 console.log(cart)
