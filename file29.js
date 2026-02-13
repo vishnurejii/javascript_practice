@@ -31,9 +31,19 @@
 
 
 //*************reduce *********** */
-function add(...arr){
-   let sum = arr.reduce((total, num) => total + num, 0);
-   return sum;   // ✅ return the value
+// function add(...arr){
+//    let sum = arr.reduce((total, num) => total + num);
+//    return sum;   
+// }
+
+// const result = add(10, 50, 60, 40, 80);
+// console.log(result);
+
+
+const add=(...args)=>{
+    console.log(args)
+    let sum=args.reduce((total,num)=>total+num,0)
+    return sum
 }
 
 const result = add(10, 50, 60, 40, 80);
