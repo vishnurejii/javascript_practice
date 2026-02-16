@@ -20,6 +20,16 @@
 // let d=Date(new Date("february 16 2026 10:10:10"))
 // console.log(d)
 
-let d = new Date("2026-02-16T10:10:10");
+// let d = new Date("2026-02-16T10:10:10");
 
-console.log(d);
+// console.log(d);
+
+const d=new Date()
+// d.setFullYear(2025)
+// d.setMonth(11)
+// d.setDate(21)
+// d.setHours(10)
+// d.setMinutes(26)
+// d.setSeconds(10)
+d.setTime(1)//it will take in milliseconds
+console.log(d)
