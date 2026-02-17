@@ -1,53 +1,62 @@
-function getStudentInfo(){
-    return new Promise((resolve)=>{
+const students=[
+    {id:1,name:"vansh",attendence:90,score:80},
+    {id:2,name:"vaishnav",attendence:50,score:50}
+]
+
+
+function getStudentInfo(id){
+    return new Promise((resolve,reject)=>{
         setTimeout(() => {
-        resolve("student info")     
+           const student= students.find(student=>student.id===id) 
+            if(student)resolve(student)
+                else reject("student not found")
+         
     }, 2000);
 
     })
 }
 
-function attendenceInfo(){
+function attendenceInfo(id){
     return new Promise((resolve,reject)=>{
         setTimeout(() => {
 
-            let attendence=75
-        if(attendence>=75)resolve("attendence is ok")  
+            const student= students.find(student=>student.id===id)
+
+             if(!student) return reject("student not found")
+
+        if(student.attendence>=75)resolve("attendence is ok")  
         else reject("attendence is low")
     }, 2000);
 
     })
 }
 
-function scoreInfo(){
+function scoreInfo(id){
     return new Promise((resolve,reject)=>{
         setTimeout(() => {
 
-            let score=60
-        if(score>=60)resolve("pass")  
-        else reject("fail")
+           const student= students.find(student=>student.id===id) 
+            if(student.score>=60)resolve("pass")
+                else reject("student not found")
     }, 2000);
 
     })
 }
 
-
-// //method2//destructuring
-// function displayInfo({name}){
-//     console.log(name)
-// }
-
 async function main() {
-//     const result= await getStudentInfo()
-//    await attendenceInfo()
-//     await scoreInfo()
-//     console.log("program completed successfully")    
-const result=await Promise.all([
-    getStudentInfo(),
-    attendenceInfo(),
-    scoreInfo()
+ 
+try{
+    const studentId=1;  
+    const result=await Promise.all([
+    getStudentInfo(studentId),
+    attendenceInfo(studentId),
+    scoreInfo(studentId)
 ])
 console.log(result)
-console.log("program completed successfully")
+console.log("student has been promoted")
+}
+catch(err){
+    console.log(err)
+}
 }
 main()
