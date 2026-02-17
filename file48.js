@@ -1,3 +1,5 @@
+//promise.all-wait for all promises.whether resolved or rejected
+
 const students=[
     {id:1,name:"appu",s1:"true",s2:"true",s3:"false"},
     {id:2,name:"kichu",s1:"true",s2:"true",s3:"true"},
