@@ -11,14 +11,22 @@ function getStudentInfo(){
     }, 2000);
 
     })
-    
-    
+}
+//method1
+// function displayInfo(result){
 
+//     console.log(result.name)
+// }
+
+
+//method2//destructuring
+function displayInfo({name}){
+    console.log(name)
 }
 
 async function main() {
     const result= await getStudentInfo()
-    console.log(result)
+    displayInfo(result)
     console.log("program completed successfully")    
 }
 main()
